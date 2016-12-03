@@ -14,6 +14,35 @@ def next_direction(current_direction, turn_direction)
   end
 end
 
+class Position
+  attr_accessor :x, :y
+
+  def initialize(x, y)
+    @x = x
+    @y = y
+  end
+
+  def distance_from_origin
+    x.abs + y.abs
+  end
+
+  # instead of using a list of string representations for comparing,
+  # could define an equivalency method that compares attributes?
+  def to_s
+    "#{x},#{y}"
+  end
+
+  # these to help with conversion to using this new object, could be
+  # deleted later
+  def [](coordinate)
+    send(coordinate)
+  end
+
+  def []=(coordinate, new_value)
+    send("#{coordinate}=", new_value)
+  end
+end
+
 def next_position(current_position, direction, step_count)
   case direction
   when 0
