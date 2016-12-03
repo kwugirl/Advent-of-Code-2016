@@ -19,7 +19,7 @@ class Day1Test < Minitest::Test
 
   def test_find_destination
     instructions = ["L10", "R10", "R10", "L5"]
-    expected_destination = {x: 0, y: 15}
+    expected_destination = Position.new(0,15)
 
     assert_equal expected_destination, find_destination(instructions)
   end
@@ -32,7 +32,7 @@ class Day1Test < Minitest::Test
 
   def test_find_previously_visited
     instructions = ["R8", "R4", "R4", "R8"]
-    expected_destination = {x: 4, y: 0}
+    expected_destination = Position.new(4,0)
 
     assert_equal expected_destination, find_previously_visited(instructions)
   end

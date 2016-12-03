@@ -28,6 +28,10 @@ class Position
 
   # instead of using a list of string representations for comparing,
   # could define an equivalency method that compares attributes?
+  def ==(another_position)
+    self.x == another_position.x && self.y == another_position.y
+  end
+
   def to_s
     "#{x},#{y}"
   end
@@ -59,7 +63,7 @@ def next_position(current_position, direction, step_count)
 end
 
 def find_destination(instructions)
-  current_position = {x: 0, y: 0}
+  current_position = Position.new(0,0)
   current_direction = 0
 
   instructions.each do |instruction|
@@ -78,7 +82,7 @@ def calculate_distance_from_origin(position)
 end
 
 def find_previously_visited(instructions)
-  current_position = {x: 0, y: 0}
+  current_position = Position.new(0,0)
   current_direction = 0
   visited = ["0,0"]
 
