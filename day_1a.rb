@@ -45,3 +45,7 @@ def find_destination(instructions)
 
   current_position
 end
+
+def calculate_distance_from_origin(position)
+  position[:x].abs + position[:y].abs
+end

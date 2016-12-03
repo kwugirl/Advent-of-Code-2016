@@ -23,4 +23,10 @@ class Day1ATest < Minitest::Test
 
     assert_equal expected_destination, find_destination(instructions)
   end
+
+  def test_calculate_distance_from_origin
+    position = {x: -15, y: 3}
+
+    assert_equal 18, calculate_distance_from_origin(position)
+  end
 end
