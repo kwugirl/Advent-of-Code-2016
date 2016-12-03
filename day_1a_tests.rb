@@ -16,4 +16,11 @@ class Day1ATest < Minitest::Test
 
     assert_equal expected_position, next_position(current_position,3,4)
   end
+
+  def test_find_destination
+    instructions = ["L10", "R10", "R10", "L5"]
+    expected_destination = {x: 0, y: 15}
+
+    assert_equal expected_destination, find_destination(instructions)
+  end
 end

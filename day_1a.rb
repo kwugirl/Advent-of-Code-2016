@@ -30,3 +30,18 @@ def next_position(current_position, direction, step_count)
 
   current_position
 end
+
+def find_destination(instructions)
+  current_position = {x: 0, y: 0}
+  current_direction = 0
+
+  instructions.each do |instruction|
+    turn_direction = instruction[0]
+    current_direction = next_direction(current_direction, turn_direction)
+
+    step_count = instruction[1..-1].to_i
+    current_position = next_position(current_position, current_direction, step_count)
+  end
+
+  current_position
+end
