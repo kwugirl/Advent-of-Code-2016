@@ -29,4 +29,11 @@ class Day1Test < Minitest::Test
 
     assert_equal 18, calculate_distance_from_origin(position)
   end
+
+  def test_find_previously_visited
+    instructions = ["R8", "R4", "R4", "R8"]
+    expected_destination = {x: 4, y: 0}
+
+    assert_equal expected_destination, find_previously_visited(instructions)
+  end
 end
