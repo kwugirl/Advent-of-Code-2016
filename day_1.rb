@@ -26,14 +26,8 @@ class Position
     x.abs + y.abs
   end
 
-  # instead of using a list of string representations for comparing,
-  # could define an equivalency method that compares attributes?
   def ==(another_position)
     self.x == another_position.x && self.y == another_position.y
-  end
-
-  def to_s
-    "#{x},#{y}"
   end
 
   # these to help with conversion to using this new object, could be
@@ -84,7 +78,7 @@ end
 def find_previously_visited(instructions)
   current_position = Position.new(0,0)
   current_direction = 0
-  visited = ["0,0"]
+  visited = []
 
   instructions.each do |instruction|
     turn_direction = instruction[0]
@@ -93,12 +87,11 @@ def find_previously_visited(instructions)
     step_count = instruction[1..-1].to_i
     step_count.times do
       current_position = next_position(current_position, current_direction, 1)
-      current_position_string = "#{current_position[:x]},#{current_position[:y]}"
 
-      if visited.include?(current_position_string)
+      if visited.include?(current_position)
         return current_position
       else
-        visited << current_position_string
+        visited << current_position.dup
       end
     end
   end
