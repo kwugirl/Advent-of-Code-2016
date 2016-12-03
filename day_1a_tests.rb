@@ -9,4 +9,11 @@ class Day1ATest < Minitest::Test
     assert_equal 2, next_direction(3,"L")
     assert_equal 0, next_direction(3,"R")
   end
+
+  def test_next_position
+    current_position = {x: 0, y: 0}
+    expected_position = {x: -4, y: 0}
+
+    assert_equal expected_position, next_position(current_position,3,4)
+  end
 end

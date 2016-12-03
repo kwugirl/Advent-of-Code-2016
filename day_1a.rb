@@ -15,3 +15,18 @@ def next_direction(current_direction, turn_direction)
     (current_direction + 1) % 4
   end
 end
+
+def next_position(current_position, direction, step_count)
+  case direction
+  when 0
+    current_position[:y] += step_count
+  when 1
+    current_position[:x] += step_count
+  when 2
+    current_position[:y] -= step_count
+  when 3
+    current_position[:x] -= step_count
+  end
+
+  current_position
+end
