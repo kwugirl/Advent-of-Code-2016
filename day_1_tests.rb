@@ -1,7 +1,7 @@
 require 'minitest/autorun'
-require './day_1a'
+require './day_1'
 
-class Day1ATest < Minitest::Test
+class Day1Test < Minitest::Test
 
   def test_next_direction_determination
     assert_equal 3, next_direction(0,"L")
