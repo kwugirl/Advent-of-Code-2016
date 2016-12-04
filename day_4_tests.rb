@@ -17,24 +17,24 @@ class Day4Test < Minitest::Test
     assert_equal expected_grouping, group_letters_by_count(freq)
   end
 
-  def test_encrypted_name
+  def test_checksum_for_name
     test_cases = [
       {
         name: 'aaaaa-bbb-z-y-x-',
-        expected_encrypted_name: 'abxyz'
+        expected_checksum: 'abxyz'
       },
       {
         name: 'a-b-c-d-e-f-g-h-',
-        expected_encrypted_name: 'abcde'
+        expected_checksum: 'abcde'
       },
       {
         name: 'not-a-real-room-',
-        expected_encrypted_name: 'oarel'
+        expected_checksum: 'oarel'
       }
     ]
 
     test_cases.each do |test_case|
-      assert_equal test_case[:expected_encrypted_name], encrypted_name(test_case[:name])
+      assert_equal test_case[:expected_checksum], checksum_for_name(test_case[:name])
     end
   end
 

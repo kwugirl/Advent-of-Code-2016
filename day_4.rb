@@ -12,19 +12,19 @@ def group_letters_by_count(freq)
   grouping
 end
 
-def encrypted_name(plaintext_name)
+def checksum_for_name(plaintext_name)
   letter_freq = count_letter_frequencies(plaintext_name)
   letters_grouped_by_counts = group_letters_by_count(letter_freq)
 
-  encrypted_name = ''
+  checksum_for_name = ''
   letters_grouped_by_counts.sort.reverse.each do |grouping|
-    encrypted_name << grouping[1]
-    return encrypted_name[0..4] if encrypted_name.length >= 5
+    checksum_for_name << grouping[1]
+    return checksum_for_name[0..4] if checksum_for_name.length >= 5
   end
 end
 
 def real_room?(name, checksum)
-  encrypted_name(name) == checksum
+  checksum_for_name(name) == checksum
 end
 
 def parse_line(line)
