@@ -38,4 +38,11 @@ class Day2Test < Minitest::Test
 
     assert_equal "1985", determine_passcode(instructions)
   end
+
+  def test_diamond_keypad
+    instructions = %w(ULL RRDDD LURDL UUUUD)
+    starting_position = Position.new(0, 2)
+
+    assert_equal "5DB3", determine_passcode(instructions, keypad: DIAMOND_KEYPAD, starting_position: starting_position)
+  end
 end
