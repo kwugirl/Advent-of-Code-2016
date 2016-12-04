@@ -15,3 +15,22 @@ end
 #   valid_triangles_count += 1 if valid_triangle?(row[0].to_i, row[1].to_i, row[2].to_i)
 # end
 # puts valid_triangles_count
+
+##############################
+# part B
+
+def extract_sets_from_columns(rows)
+  potential_triangle_sets = []
+
+  rows.each_slice(3) do |row_triplet|
+    (0..2).each do |i|
+      set = []
+      (0..2).each do |j|
+        set << row_triplet[j][i].to_i
+      end
+      potential_triangle_sets << set
+    end
+  end
+
+  potential_triangle_sets
+end
