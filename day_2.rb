@@ -49,13 +49,14 @@ def get_digit(keypad, position)
   keypad[position.y][position.x]
 end
 
-def determine_passcode(instructions)
-  keypad = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-  ]
-  current_position = Position.new(1,1)
+DEFAULT_KEYPAD = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+DEFAULT_STARTING_POSITION = Position.new(1,1)
+def determine_passcode(instructions, keypad: DEFAULT_KEYPAD, starting_position: DEFAULT_STARTING_POSITION)
+  current_position = starting_position
   passcode = []
 
   instructions.each do |line|
@@ -75,3 +76,14 @@ end
 #   DDDLRURUDRRRURUUDLRLRDULDRDUULRURRRUULUDULDDLRRLLRLDDLURLRUDRLRRLRDLRLLDDLULDLRRURDDRDLLDDRUDRRRURRDUDULUDDULRRDRLDUULDLLLDRLUDRDURDRRDLLLLRRLRLLULRURUUDDRULDLLRULDRDLUDLULDDDLLUULRRLDDUURDLULUULULRDDDLDUDDLLLRRLLLDULRDDLRRUDDRDDLLLLDLDLULRRRDUDURRLUUDLLLLDUUULDULRDRULLRDRUDULRUUDULULDRDLDUDRRLRRDRLDUDLULLUDDLURLUUUDRDUDRULULDRDLRDRRLDDRRLUURDRULDLRRLLRRLDLRRLDLDRULDDRLURDULRRUDURRUURDUUURULUUUDLRRLDRDLULDURUDUDLUDDDULULRULDRRRLRURLRLRLUDDLUUDRRRLUUUDURLDRLRRDRRDURLLL
 #   )
 # puts determine_passcode(input)
+
+####################################################
+# part B
+
+DIAMOND_KEYPAD = [
+  [nil,nil,  1,nil,nil],
+  [nil,  2,  3,  4,nil],
+  [  5,  6,  7,  8,  9],
+  [nil,"A","B","C",nil],
+  [nil,nil,"D",nil, nil]
+]
