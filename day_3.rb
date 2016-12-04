@@ -34,3 +34,9 @@ def extract_sets_from_columns(rows)
 
   potential_triangle_sets
 end
+
+# file_rows = read_file_as_rows('day_3_input.txt')
+# sets_by_columns = extract_sets_from_columns(file_rows)
+# valid_triangles_count = 0
+# sets_by_columns.each { |set| valid_triangles_count += 1 if valid_triangle?(set[0], set[1], set[2]) }
+# puts valid_triangles_count
