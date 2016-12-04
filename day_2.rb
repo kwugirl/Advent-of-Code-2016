@@ -33,7 +33,8 @@ def new_position(old_position, instruction, keypad: DEFAULT_KEYPAD)
 end
 
 def valid_position?(position, keypad: DEFAULT_KEYPAD)
-  position.x.between?(0, keypad.length-1) && position.y.between?(0, keypad.length-1)
+  position.x.between?(0, keypad.length-1) && position.y.between?(0, keypad.length-1) &&
+    get_digit(keypad, position)
 end
 
 def determine_next_position(old_position, instructions, keypad: DEFAULT_KEYPAD)
