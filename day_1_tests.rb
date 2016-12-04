@@ -11,8 +11,8 @@ class Day1Test < Minitest::Test
   end
 
   def test_next_position
-    current_position = {x: 0, y: 0}
-    expected_position = {x: -4, y: 0}
+    current_position = Position.new(0,0)
+    expected_position = Position.new(-4,0)
 
     assert_equal expected_position, next_position(current_position,3,4)
   end

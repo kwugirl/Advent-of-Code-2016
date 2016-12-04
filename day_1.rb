@@ -29,28 +29,18 @@ class Position
   def ==(another_position)
     self.x == another_position.x && self.y == another_position.y
   end
-
-  # these to help with conversion to using this new object, could be
-  # deleted later
-  def [](coordinate)
-    send(coordinate)
-  end
-
-  def []=(coordinate, new_value)
-    send("#{coordinate}=", new_value)
-  end
 end
 
 def next_position(current_position, direction, step_count)
   case direction
   when 0
-    current_position[:y] += step_count
+    current_position.y += step_count
   when 1
-    current_position[:x] += step_count
+    current_position.x += step_count
   when 2
-    current_position[:y] -= step_count
+    current_position.y -= step_count
   when 3
-    current_position[:x] -= step_count
+    current_position.x -= step_count
   end
 
   current_position
