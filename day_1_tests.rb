@@ -25,9 +25,9 @@ class Day1Test < Minitest::Test
   end
 
   def test_calculate_distance_from_origin
-    position = {x: -15, y: 3}
+    position = Position.new(-15,3)
 
-    assert_equal 18, calculate_distance_from_origin(position)
+    assert_equal 18, position.distance_from_origin
   end
 
   def test_find_previously_visited
