@@ -32,8 +32,8 @@ def new_position(old_position, instruction)
   valid_position?(new_position) ? new_position : old_position
 end
 
-def valid_position?(position)
-  position.x.between?(0,2) && position.y.between?(0,2)
+def valid_position?(position, keypad: DEFAULT_KEYPAD)
+  position.x.between?(0, keypad.length-1) && position.y.between?(0, keypad.length-1)
 end
 
 def determine_next_position(old_position, instructions)
