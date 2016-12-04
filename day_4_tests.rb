@@ -37,4 +37,23 @@ class Day4Test < Minitest::Test
       assert_equal test_case[:expected_encrypted_name], encrypted_name(test_case[:name])
     end
   end
+
+  def test_real?
+    test_cases = [
+      {
+        name: 'aaaaa-bbb-z-y-x-',
+        checksum: 'abxyz',
+        expected_result: true
+      },
+      {
+        name: 'totally-real-room-',
+        checksum: 'decoy',
+        expected_result: false
+      }
+    ]
+
+    test_cases.each do |test_case|
+      assert_equal test_case[:expected_result], real_room?(test_case[:name], test_case[:checksum])
+    end
+  end
 end

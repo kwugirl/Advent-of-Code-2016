@@ -22,3 +22,7 @@ def encrypted_name(plaintext_name)
     return encrypted_name[0..4] if encrypted_name.length >= 5
   end
 end
+
+def real_room?(name, checksum)
+  encrypted_name(name) == checksum
+end
