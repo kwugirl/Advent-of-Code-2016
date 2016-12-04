@@ -48,3 +48,22 @@ end
 ##########################################
 
 # Part B
+
+def decrypted_name(name, shift)
+  name.chars.map.with_index do |char, i|
+    name[i] = decrypted_character(char, shift)
+  end
+  name
+end
+
+def decrypted_character(char, shift)
+  alphabet = ('a'..'z').to_a
+
+  if char == '-'
+    ' '
+  else
+    char_index = alphabet.find_index(char)
+    decrypted_character_index = (char_index + shift) % 26
+    alphabet[decrypted_character_index]
+  end
+end

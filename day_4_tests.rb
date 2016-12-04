@@ -56,4 +56,11 @@ class Day4Test < Minitest::Test
       assert_equal test_case[:expected_result], real_room?(test_case[:name], test_case[:checksum])
     end
   end
+
+  def test_decrypted_name
+    encrypted_name = 'qzmt-zixmtkozy-ivhz'
+    expected_decrypted_name = 'very encrypted name'
+
+    assert_equal expected_decrypted_name, decrypted_name(encrypted_name, 343)
+  end
 end
