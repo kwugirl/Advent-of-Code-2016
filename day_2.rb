@@ -20,19 +20,20 @@ def new_position(old_position, instruction)
 
   case instruction
   when "U"
-    new_position.y -= 1 unless new_position.y == 0
+    new_position.y -= 1
   when "D"
-    # there should probably be a better way to validate whether a
-    # move should be ignored than hardcoding in here an assumption
-    # about having 3x3 keypad
-    new_position.y += 1 unless new_position.y == 2
+    new_position.y += 1
   when "L"
-    new_position.x -= 1 unless new_position.x == 0
+    new_position.x -= 1
   when "R"
-    new_position.x += 1 unless new_position.x == 2
+    new_position.x += 1
   end
 
-  new_position
+  valid_position?(new_position) ? new_position : old_position
+end
+
+def valid_position?(position)
+  position.x.between?(0,2) && position.y.between?(0,2)
 end
 
 def determine_next_position(old_position, instructions)
