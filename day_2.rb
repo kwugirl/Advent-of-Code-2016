@@ -15,7 +15,7 @@ end
 # at the previous button (or, for the first line, the "5" button);
 # press whatever button you're on at the end of each line.
 # If a move doesn't lead to a button, ignore it.
-def new_position(old_position, instruction)
+def new_position(old_position, instruction, keypad: DEFAULT_KEYPAD)
   new_position = old_position.dup
 
   case instruction
@@ -29,18 +29,18 @@ def new_position(old_position, instruction)
     new_position.x += 1
   end
 
-  valid_position?(new_position) ? new_position : old_position
+  valid_position?(new_position, keypad: keypad) ? new_position : old_position
 end
 
 def valid_position?(position, keypad: DEFAULT_KEYPAD)
   position.x.between?(0, keypad.length-1) && position.y.between?(0, keypad.length-1)
 end
 
-def determine_next_position(old_position, instructions)
+def determine_next_position(old_position, instructions, keypad: DEFAULT_KEYPAD)
   current_position = old_position
 
   (0...instructions.length).each do |i|
-    current_position = new_position(current_position, instructions[i])
+    current_position = new_position(current_position, instructions[i], keypad: keypad)
   end
 
   current_position
@@ -61,7 +61,7 @@ def determine_passcode(instructions, keypad: DEFAULT_KEYPAD, starting_position: 
   passcode = []
 
   instructions.each do |line|
-    current_position = determine_next_position(current_position.dup, line)
+    current_position = determine_next_position(current_position.dup, line, keypad: keypad)
     passcode << get_digit(keypad, current_position)
   end
 
