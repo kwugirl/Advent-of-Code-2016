@@ -12,8 +12,8 @@ def group_letters_by_count(freq)
   grouping
 end
 
-def checksum_for_name(plaintext_name)
-  letter_freq = count_letter_frequencies(plaintext_name)
+def checksum_for_name(name)
+  letter_freq = count_letter_frequencies(name)
   letters_grouped_by_counts = group_letters_by_count(letter_freq)
 
   checksum_for_name = ''
@@ -67,3 +67,17 @@ def decrypted_character(char, shift)
     alphabet[decrypted_character_index]
   end
 end
+
+def find_room(filename, room_name)
+  File.readlines(filename).each do |line|
+    parsed_line = parse_line(line)
+    valid_room = real_room?(parsed_line[:name], parsed_line[:checksum])
+    plaintext_name = decrypted_name(parsed_line[:name], parsed_line[:sector_id])
+
+    if valid_room && plaintext_name == room_name
+      return parsed_line[:sector_id]
+    end
+  end
+end
+
+# puts find_room('day_4_input.txt', 'northpole object storage')
