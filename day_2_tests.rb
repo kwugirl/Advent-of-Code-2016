@@ -32,4 +32,10 @@ class Day2Test < Minitest::Test
       assert_equal test_case[:expected_next_position], result
     end
   end
+
+  def test_determine_passcode
+    instructions = %w(ULL RRDDD LURDL UUUUD)
+
+    assert_equal "1985", determine_passcode(instructions)
+  end
 end

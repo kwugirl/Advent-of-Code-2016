@@ -45,10 +45,23 @@ def determine_next_position(old_position, instructions)
   current_position
 end
 
-keypad = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-]
+def get_digit(keypad, position)
+  keypad[position.y][position.x]
+end
 
+def determine_passcode(instructions)
+  keypad = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ]
+  current_position = Position.new(1,1)
+  passcode = []
 
+  instructions.each do |line|
+    current_position = determine_next_position(current_position.dup, line)
+    passcode << get_digit(keypad, current_position)
+  end
+
+  passcode.join
+end
