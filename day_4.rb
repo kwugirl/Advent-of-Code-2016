@@ -27,18 +27,24 @@ def real_room?(name, checksum)
   encrypted_name(name) == checksum
 end
 
+def parse_line(line)
+  regex_result = line.match /^(\D+)-(\d+)\[([a-z]+)\]$/
+  {name: regex_result[1], sector_id: regex_result[2].to_i, checksum: regex_result[3]}
+end
+
 def sum_valid_room_sector_ids(filename)
   sector_ids_sum = 0
   File.readlines(filename).each do |line|
-    parsed_line = line.match /^(\D+)(\d+)\[([a-z]+)\]$/
-    name = parsed_line[1]
-    sector_id = parsed_line[2].to_i
-    checksum = parsed_line[3]
-
-    sector_ids_sum += sector_id if real_room?(name, checksum)
+    parsed_line = parse_line(line)
+    sector_ids_sum += parsed_line[:sector_id] if real_room?(parsed_line[:name], parsed_line[:checksum])
   end
 
   sector_ids_sum
 end
 
+# Part A
 # puts sum_valid_room_sector_ids('day_4_input.txt')
+
+##########################################
+
+# Part B
