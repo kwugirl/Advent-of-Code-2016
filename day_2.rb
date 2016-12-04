@@ -89,3 +89,5 @@ DIAMOND_KEYPAD = [
   [nil,"A","B","C",nil],
   [nil,nil,"D",nil, nil]
 ]
+# starting_position = Position.new(0, 2)
+# puts determine_passcode(input, keypad: DIAMOND_KEYPAD, starting_position: starting_position)
