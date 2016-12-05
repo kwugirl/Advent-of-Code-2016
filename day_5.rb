@@ -8,7 +8,7 @@ def hashed_string(str)
   Digest::MD5.hexdigest(str)
 end
 
-def construct_password(input)
+def construct_password_in_order(input)
   password = []
   i = 0
 
@@ -21,4 +21,9 @@ def construct_password(input)
   password.join
 end
 
-# puts construct_password('cxdnnyjw')
+# Part A
+# puts construct_password_in_order('cxdnnyjw')
+
+###############################
+
+# Part B

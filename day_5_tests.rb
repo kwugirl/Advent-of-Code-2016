@@ -13,7 +13,7 @@ class Day5Test < Minitest::Test
     assert !interesting_hash?(hashed_string('abc42'))
   end
 
-  def test_construct_password
-    assert_equal '18f47a30', construct_password('abc')
+  def test_construct_password_in_order
+    assert_equal '18f47a30', construct_password_in_order('abc')
   end
 end
