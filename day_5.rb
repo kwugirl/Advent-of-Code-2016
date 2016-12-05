@@ -20,3 +20,5 @@ def construct_password(input)
 
   password.join
 end
+
+# puts construct_password('cxdnnyjw')
