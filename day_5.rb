@@ -27,3 +27,26 @@ end
 ###############################
 
 # Part B
+def construct_password_with_positioning(input)
+  password = Array.new(8,nil)
+  i = 0
+  valid_positions = (0..7).to_a.map {|i| i.to_s }
+
+  while password.include?(nil)
+    hashed_string = hashed_string("#{input}#{i}")
+
+    if interesting_hash?(hashed_string)
+      pos = hashed_string[5]
+
+      if valid_positions.include?(pos) && password[pos.to_i].nil?
+        password[pos.to_i] = hashed_string[6]
+      end
+    end
+
+    i += 1
+  end
+
+  password.join
+end
+
+# puts construct_password_with_positioning('cxdnnyjw')
