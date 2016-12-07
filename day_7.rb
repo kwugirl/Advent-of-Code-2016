@@ -29,3 +29,16 @@ def supports_tls?(str)
 
   false
 end
+
+def count_tls_supporting_addresses(filename)
+  count = 0
+  File.readlines(filename).each do |line|
+    if supports_tls?(line)
+      count += 1
+    end
+  end
+
+  count
+end
+
+# puts count_tls_supporting_addresses('day_7_input.txt')
