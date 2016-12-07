@@ -28,4 +28,11 @@ class Day7Test < Minitest::Test
       assert !supports_tls?(test_case)
     end
   end
+
+  def test_three_character_palindromes
+    test_string = "ababcac"
+    expected = ["aba","bab","cac"]
+
+    assert_equal expected, three_character_palindromes(test_string)
+  end
 end

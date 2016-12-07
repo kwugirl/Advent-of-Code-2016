@@ -41,4 +41,25 @@ def count_tls_supporting_addresses(filename)
   count
 end
 
+# Part A
 # puts count_tls_supporting_addresses('day_7_input.txt')
+
+########################
+
+# Part B
+def three_character_palindromes(str)
+  characters = str.split("")
+  second_to_last_index = characters.length - 2
+
+  palindromes = []
+
+  (1..second_to_last_index).each do |i|
+    if characters[i+1] == characters[i-1] &&
+      characters[i] != characters[i+1]
+
+      palindromes << characters[i-1..i+1].join
+    end
+  end
+
+  palindromes.uniq
+end
