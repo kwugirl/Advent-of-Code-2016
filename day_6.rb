@@ -38,4 +38,10 @@ def derive_correct_password(input)
   password.join
 end
 
+def read_file(filename)
+  File.read(filename).split("\n")
+end
 
+# Part A
+# input = read_file('day_6_input.txt')
+# puts derive_correct_password(input)
