@@ -21,7 +21,7 @@ def supports_tls?(str)
     return false if has_an_abba?(section)
   end
 
-  non_bracketed_strings = str.scan(/(\w*)\[\w+\]/).flatten
+  non_bracketed_strings = str.scan(/(\w*)\[\w+\](\w*)/).flatten
 
   non_bracketed_strings.each do |section|
     return true if has_an_abba?(section)
