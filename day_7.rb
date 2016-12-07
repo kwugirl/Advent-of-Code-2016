@@ -94,3 +94,17 @@ def supports_ssl?(str)
 
   false
 end
+
+def count_ssl_supporting_addresses(filename)
+  count = 0
+  File.readlines(filename).each do |line|
+    if supports_ssl?(line)
+      count += 1
+    end
+  end
+
+  count
+end
+
+# Part B
+# puts count_ssl_supporting_addresses('day_7_input.txt')
