@@ -13,3 +13,13 @@ def has_an_abba?(str)
 
   false
 end
+
+def supports_tls?(str)
+  pieces = str.match /^(.+)\[(.+)\](.+$)/
+
+  pre_brackets = pieces[1]
+  hypernet_seq = pieces[2]
+  post_brackets = pieces[3]
+
+  !has_an_abba?(hypernet_seq) && (has_an_abba?(pre_brackets) || has_an_abba?(post_brackets))
+end
