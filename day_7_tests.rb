@@ -35,4 +35,11 @@ class Day7Test < Minitest::Test
 
     assert_equal expected, three_character_palindromes(test_string)
   end
+
+  def test_corresponding_babs
+    test_set = ["aba","bab","cac"]
+    expected = ["bab","aba","aca"]
+
+    assert_equal expected, corresponding_babs(test_set)
+  end
 end

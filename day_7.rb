@@ -63,3 +63,9 @@ def three_character_palindromes(str)
 
   palindromes.uniq
 end
+
+def corresponding_babs(palindromes)
+  babs = []
+  palindromes.each {|str| babs << "#{str[1]}#{str[0]}#{str[1]}" }
+  babs
+end
