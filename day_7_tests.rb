@@ -21,7 +21,8 @@ class Day7Test < Minitest::Test
       assert supports_tls? test_case
     end
 
-    invalid_test_cases = ["abcd[bddb]xyyx", "aaaa[qwer]tyui"]
+    invalid_test_cases = ["abcd[bddb]xyyx", "aaaa[qwer]tyui",
+      "abba[mnop]qrst[bddb]"]
 
     invalid_test_cases.each do |test_case|
       assert !supports_tls?(test_case)

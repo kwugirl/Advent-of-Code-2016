@@ -15,11 +15,17 @@ def has_an_abba?(str)
 end
 
 def supports_tls?(str)
-  pieces = str.match /^(.+)\[(.+)\](.+$)/
+  hypernet_sequences = str.scan(/\[(\w+)\]/).flatten
 
-  pre_brackets = pieces[1]
-  hypernet_seq = pieces[2]
-  post_brackets = pieces[3]
+  hypernet_sequences.each do |section|
+    return false if has_an_abba?(section)
+  end
 
-  !has_an_abba?(hypernet_seq) && (has_an_abba?(pre_brackets) || has_an_abba?(post_brackets))
+  non_bracketed_strings = str.scan(/(\w*)\[\w+\]/).flatten
+
+  non_bracketed_strings.each do |section|
+    return true if has_an_abba?(section)
+  end
+
+  false
 end
