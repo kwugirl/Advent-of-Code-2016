@@ -63,3 +63,7 @@ def password_from_lowest_freq_letters(input)
 
   password.join
 end
+
+# input = read_file('day_6_input.txt')
+# puts password_from_lowest_freq_letters(input)
+
