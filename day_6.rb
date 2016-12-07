@@ -45,3 +45,21 @@ end
 # Part A
 # input = read_file('day_6_input.txt')
 # puts derive_correct_password(input)
+
+##################################
+
+# Part B
+def password_from_lowest_freq_letters(input)
+  freq_counts = process_input(input)
+
+  password = []
+
+  freq_counts.each do |counter|
+    counter.delete(:most_frequent)
+    values = counter.values
+    values.delete(0)
+    password << counter.key(values.min)
+  end
+
+  password.join
+end
