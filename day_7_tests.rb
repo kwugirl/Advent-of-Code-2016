@@ -42,4 +42,15 @@ class Day7Test < Minitest::Test
 
     assert_equal expected, corresponding_babs(test_set)
   end
+
+  def test_supports_ssl?
+    valid_cases = ["aba[bab]xyz", "aaa[kek]eke", "zazbz[bzb]cdb"]
+
+    valid_cases.each do |test|
+      assert supports_ssl?(test)
+    end
+
+    invalid_case = "xyx[xyx]xyx"
+    assert !supports_ssl?(invalid_case)
+  end
 end

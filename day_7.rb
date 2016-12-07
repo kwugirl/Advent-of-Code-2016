@@ -69,3 +69,28 @@ def corresponding_babs(palindromes)
   palindromes.each {|str| babs << "#{str[1]}#{str[0]}#{str[1]}" }
   babs
 end
+
+def supports_ssl?(str)
+  hypernet_sequences = str.scan(/\[(\w+)\]/).flatten
+  hypernet_seq_palindromes = []
+
+  hypernet_sequences.each do |section|
+    hypernet_seq_palindromes << three_character_palindromes(section)
+  end
+  hypernet_seq_palindromes.flatten!
+
+  non_bracketed_strings = str.scan(/(\w*)\[\w+\](\w*)/).flatten
+  non_bracketed_palindromes = []
+
+  non_bracketed_strings.each do |section|
+    non_bracketed_palindromes << three_character_palindromes(section)
+  end
+  non_bracketed_palindromes.flatten!
+
+  corresponding_babs = corresponding_babs(non_bracketed_palindromes)
+  corresponding_babs.each do |bab|
+    return true if hypernet_seq_palindromes.include?(bab)
+  end
+
+  false
+end
