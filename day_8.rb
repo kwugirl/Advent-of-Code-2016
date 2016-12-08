@@ -63,7 +63,7 @@ def parse_instruction(line)
   {command: command, a: a.to_i, b: b.to_i}
 end
 
-def answer_part_a(filename)
+def deduce_screen(filename)
   screen = create_screen(50, 6)
 
   File.readlines(filename).each do |line|
@@ -72,9 +72,38 @@ def answer_part_a(filename)
     send(instruction[:command], instruction[:a], instruction[:b], screen)
   end
 
+  screen
+end
+
+def answer_part_a(filename)
+  screen = deduce_screen(filename)
+
   on_pixel_count = 0
   screen.each {|row| on_pixel_count += row.count("#")}
   on_pixel_count
 end
 
 # puts answer_part_a("day_8_input.txt")
+
+############################
+# Part B
+
+def print_letters(screen)
+  (0..9).each do |multiplier|
+    screen.each do |row|
+      beg = 5*multiplier
+      ending = 5*(multiplier+1)
+      puts row[beg...ending].join
+    end
+
+    puts "**************************************"
+  end
+end
+
+def answer_part_b(filename)
+  screen = deduce_screen(filename)
+
+  print_letters(screen)
+end
+
+answer_part_b("day_8_input.txt")
