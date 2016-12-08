@@ -43,3 +43,22 @@ def rotate_column(a, b, screen)
 
   screen
 end
+
+def parse_instruction(line)
+  pieces = line.split
+
+  if pieces[1] == "row"
+    command = :rotate_row
+    a = pieces[2].sub("y=","")
+    b = pieces[-1]
+  elsif pieces[1] == "column"
+    command = :rotate_column
+    a = pieces[2].sub("x=","")
+    b = pieces[-1]
+  else
+    command = :rect
+    a, b = pieces[1].split("x")
+  end
+
+  {command: command, a: a.to_i, b: b.to_i}
+end
