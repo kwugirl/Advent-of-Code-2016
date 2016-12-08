@@ -24,3 +24,22 @@ def rotate_row(a, b, screen)
 
   screen
 end
+
+# rotate column x=A by B shifts all of the pixels in
+# column A (0 is the left column) down by B pixels.
+# Pixels that would fall off the bottom appear at the top
+# of the column.
+def rotate_column(a, b, screen)
+  column = []
+  screen.each { |row| column << row[a] }
+
+  edge = column.pop(b)
+  column.unshift(edge)
+  column.flatten!
+
+  screen.each_with_index do |row, i|
+    row[a] = column[i]
+  end
+
+  screen
+end
