@@ -13,4 +13,19 @@ class Day8Test < Minitest::Test
 
     assert_equal expected, rect(3, 2, starting_screen)
   end
+
+  def test_rotate_row
+    starting_screen = [
+      ["#",".","#",".",".",".","."],
+      ["#","#","#",".",".",".","."],
+      [".","#",".",".",".",".","."]
+    ]
+    expected = [
+      [".",".",".",".","#",".","#"],
+      ["#","#","#",".",".",".","."],
+      [".","#",".",".",".",".","."]
+    ]
+
+    assert_equal expected, rotate_row(0, 4, starting_screen)
+  end
 end

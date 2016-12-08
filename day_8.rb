@@ -13,3 +13,14 @@ def rect(a, b, screen)
 
   screen
 end
+
+# rotate row y=A by B shifts all of the pixels in row A
+# (0 is the top row) right by B pixels. Pixels that would
+# fall off the right end appear at the left end of the row.
+def rotate_row(a, b, screen)
+  edge = screen[a].pop(b)
+  screen[a].unshift(edge)
+  screen[a].flatten!
+
+  screen
+end
