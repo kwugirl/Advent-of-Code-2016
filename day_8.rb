@@ -62,3 +62,19 @@ def parse_instruction(line)
 
   {command: command, a: a.to_i, b: b.to_i}
 end
+
+def answer_part_a(filename)
+  screen = create_screen(50, 6)
+
+  File.readlines(filename).each do |line|
+    instruction = parse_instruction(line)
+
+    send(instruction[:command], instruction[:a], instruction[:b], screen)
+  end
+
+  on_pixel_count = 0
+  screen.each {|row| on_pixel_count += row.count("#")}
+  on_pixel_count
+end
+
+# puts answer_part_a("day_8_input.txt")
