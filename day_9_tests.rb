@@ -33,4 +33,16 @@ class Day9Test < Minitest::Test
     assert_equal expected, decompressed
     assert_equal 11, decompressed.length
   end
+
+  def test_fake_marker
+    decompressed = decompress("(6x1)(1x3)A")
+    expected = "(1x3)A"
+    assert_equal expected, decompressed
+    assert_equal 6, decompressed.length
+
+    decompressed = decompress("X(8x2)(3x3)ABCY")
+    expected = "X(3x3)ABC(3x3)ABCY"
+    assert_equal expected, decompressed
+    assert_equal 18, decompressed.length
+  end
 end
