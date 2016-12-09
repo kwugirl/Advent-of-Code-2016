@@ -25,4 +25,12 @@ class Day9Test < Minitest::Test
     assert_equal expected, decompressed
     assert_equal 9, decompressed.length
   end
+
+  def test_multiple_markers
+    decompressed = decompress("A(2x2)BCD(2x2)EFG")
+    expected = "ABCBCDEFEFG"
+
+    assert_equal expected, decompressed
+    assert_equal 11, decompressed.length
+  end
 end
