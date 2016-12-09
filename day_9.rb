@@ -26,3 +26,5 @@ def decompress(compressed)
 
   decompressed
 end
+
+# puts decompress(File.read('day_9_input.txt').strip).length
