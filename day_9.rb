@@ -1,9 +1,24 @@
-def decompress(compressed)
-  decompressed = []
+require 'pry'
 
-  compressed.split("").each do |letter|
-    decompressed << letter
+def decompress(compressed)
+  decompressed = ""
+
+  pre_marker = compressed[/[^(]*/]
+  decompressed << pre_marker
+
+  rest_of_string = compressed[pre_marker.length..-1]
+
+  if rest_of_string.length > 0
+    pieces = rest_of_string.match(/^\((\d+)x(\d+)\)(.+)/)
+    rep_length = pieces[1].to_i
+    rep_count = pieces[2].to_i
+    rest_of_string = pieces[3].split("")
+
+    rep = rest_of_string.shift(rep_length)
+    rep_count.times { decompressed << rep.join }
+
+    decompressed << rest_of_string.join
   end
 
-  decompressed.join
+  decompressed
 end
